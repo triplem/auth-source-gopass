@@ -1,0 +1,45 @@
+#+title: Readme auth-source-gopass
+#+category: Readme auth-source-gopass
+
+* Auth-Source-Gopass Emacs Package
+
+This package provides [[https://www.gopass.pw/][gopass - the team password manager]] as an auth-source for emacs. This could be used with packages like eg. smtpmail to provide passwords for the smtp-user. It is a drop-in replacement for the default auth-info source.
+
+This package does not provide any caching or interactive selection of the gopass entries. Each query has to resolve exactly one
+entry (right now).
+
+** Usage
+
+This package could be enabled by using the following line:
+
+#+BEGIN_SRC elisp
+(auth-source-gopass-enable)
+#+END_SRC
+
+** Configuration
+
+This package provides some parameters as well as a function, which can be customized to reflect you personal use-case.
+
+- -auth-source-gopass-path-prefix- :: Default value "accounts"
+  Prefix of all entries in the gopass backend.
+
+- -auth-source-gopass-path-separator- :: Default value "/"
+  Separator of elements in the gopass backend structure.
+
+- -auth-source-gopass-executable- :: Default value "gopass"
+  Executable used for gopass.
+
+- -auth-source-gopass-construct-query-path- :: Default value 'auth-source-gopass--gopass-construct-entry-path
+  Function to construct the query path in the gopass store.
+
+  #+BEGIN_SRC elisp
+  (defun auth-source-gopass--gopass-construct-entry-path (_backend _type host user _port)
+  "Construct the full entry-path for the gopass entry grom HOST and USER.
+   Usually starting with the auth-source-gopass-path-prefix, followed by host
+   and user, separated by the auth-source-gopass-path-separator."
+  (mapconcat 'identity (list auth-source-gopass-path-prefix
+                             host
+                             user) auth-source-gopass-path-separator))
+  #+END_SRC
+
+  This function could be overwritten to construct the query path to your personal structure.
