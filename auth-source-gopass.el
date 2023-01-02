@@ -9,7 +9,7 @@
 
 ;;; Package-Requires: ((emacs "24.4"))
 
-;;; Version: 0.0.1
+;;; Version: 0.0.2
 
 ;;; Commentary:
 ;; This package adds gopass support to auth-source by calling
@@ -48,8 +48,8 @@
 
 (defun auth-source-gopass--gopass-construct-query-path (_backend _type host user _port)
   "Construct the full entry-path for the gopass entry grom HOST and USER.
-Usually starting with the auth-source-gopass-path-prefix, followed by host
-and user, separated by the auth-source-gopass-path-separator."
+Usually starting with the `auth-source-gopass-path-prefix', followed by host
+and user, separated by the `auth-source-gopass-path-separator'."
   (mapconcat 'identity (list auth-source-gopass-path-prefix
                              host
                              user) auth-source-gopass-path-separator))
