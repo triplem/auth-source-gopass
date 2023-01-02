@@ -3,6 +3,8 @@
 
 * Auth-Source-Gopass Emacs Package
 
+[[https://www.gnu.org/licenses/gpl-3.0][https://img.shields.io/badge/License-GPL%20v3-blue.svg]]
+
 This package provides [[https://www.gopass.pw/][gopass - the team password manager]] as an auth-source for emacs. This could be used with packages like eg. smtpmail to provide passwords for the smtp-user. It is a drop-in replacement for the default auth-info source.
 
 This package does not provide any caching or interactive selection of the gopass entries. Each query has to resolve exactly one
