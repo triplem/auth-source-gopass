@@ -1,15 +1,15 @@
 ;;; auth-source-gopass.el --- Gopass integration for auth-source -*- lexical-binding: t; -*-
 
-;;; Copyright (C) 2022 Markus M. May
-;;; SPDX-License-Identifier: GPL-3.0-or-later
+;; Copyright (C) 2022 Markus M. May
+;; SPDX-License-Identifier: GPL-3.0-or-later
 
-;;; Author: Markus M. May <mmay@javafreedom.org>
-;;; Created: 31 December 2022
-;;; URL: https://github.com/
+;; Author: Markus M. May <mmay@javafreedom.org>
+;; Created: 31 December 2022
+;; URL: https://github.com/
 
-;;; Package-Requires: ((emacs "24.4"))
+;; Package-Requires: ((emacs "24.4"))
 
-;;; Version: 0.0.2
+;; Version: 0.0.3
 
 ;;; Commentary:
 ;; This package adds gopass support to auth-source by calling
@@ -50,7 +50,7 @@
   "Construct the full entry-path for the gopass entry grom HOST and USER.
 Usually starting with the `auth-source-gopass-path-prefix', followed by host
 and user, separated by the `auth-source-gopass-path-separator'."
-  (mapconcat 'identity (list auth-source-gopass-path-prefix
+  (mapconcat #'identity (list auth-source-gopass-path-prefix
                              host
                              user) auth-source-gopass-path-separator))
 
@@ -68,7 +68,7 @@ SPEC, BACKEND, TYPE, HOST, USER and PORT are required by auth-source."
         (list (list :user user
                     :secret got-secret)))
     ;; If not executable was found, return nil and show a warning
-    (warn (format "`auth-source-gopass': Could not find executable '%s' to query gopass" auth-source-gopass-executable))))
+    (warn "`auth-source-gopass': Could not find executable '%s' to query gopass" auth-source-gopass-executable)))
 
 ;;;###autoload
 (defun auth-source-gopass-enable ()
